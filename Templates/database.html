@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>Registered Users</h2>
+<hr>
+
+{% if users %}
+
+    {% for user in users %}
+        <div style="border:1px solid #ccc; padding:15px; margin-bottom:15px; border-radius:8px;">
+
+            <p><strong>Username:</strong> {{ user.username }}</p>
+
+            {% if user.image %}
+                <img src="data:image/png;base64,{{ user.image }}" 
+                     width="150" 
+                     alt="User Image">
+            {% else %}
+                <p>No Image Uploaded</p>
+            {% endif %}
+
+        </div>
+    {% endfor %}
+
+{% else %}
+    <p>No users found.</p>
+{% endif %}
+
+<br>
+<a href="{{ url_for('home') }}">Go Back</a>
+
+{% endblock %}

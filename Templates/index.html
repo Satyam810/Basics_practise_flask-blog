@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>All Blogs</h2>
+<hr>
+
+{% if blogs %}
+    {% for blog in blogs %}
+        <div style="border:1px solid #ccc; padding:15px; margin-bottom:15px; border-radius:8px;">
+
+            <h3>{{ blog.title }}</h3>
+
+            <p>
+                {{ blog.description[:120] }}...
+            </p>
+
+            <small>
+                By {{ blog.author }} on 
+                {{ blog.date_created.strftime('%Y-%m-%d') }}
+            </small>
+
+            <br><br>
+
+            <a href="{{ url_for('view', id=blog.id) }}">
+                Read More
+            </a>
+
+        </div>
+    {% endfor %}
+{% else %}
+    <p>No blogs available.</p>
+{% endif %}
+
+{% endblock %}

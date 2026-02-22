@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div style="border:1px solid #ccc; padding:20px; border-radius:8px;">
+
+    <h2>{{ blog.title }}</h2>
+
+    <p>
+        <small>
+            By {{ blog.author }} on 
+            {{ blog.date_created.strftime('%Y-%m-%d') }}
+        </small>
+    </p>
+
+    <hr>
+
+    <p>
+        {{ blog.description }}
+    </p>
+
+    <br>
+
+    <a href="{{ url_for('index') }}">← Back</a>
+
+</div>
+
+{% endblock %}
